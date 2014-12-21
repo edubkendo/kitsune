@@ -28,6 +28,10 @@ defmodule Kitsune.JSON do
       PersonRepresenter.to_json(person)
       #=> "{\"name\":\"Nikki\",\"age\":18}"
 
+      json = "{\"name\":\"Nikki\",\"age\":18}"
+      PersonRepresenter.from_json(json, Person)
+      #=> %Person{ name: "Nikki", age: 18 }
+
   """
   defmacro property(label) do
     quote do

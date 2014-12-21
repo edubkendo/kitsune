@@ -7,3 +7,25 @@ Kitsune
 
 Kitsune is an Elixir library for transforming the representation of data.
 
+
+## Examples
+
+    defmodule Person do
+      defstruct name: nil, age: nil
+    end
+
+    defmodule PersonRepresenter do
+      use Kitsune.JSON
+
+      property :name
+      property :age
+    end
+
+    person = %Person{name: "Nikki", age: 18}
+    PersonRepresenter.to_json(person)
+    #=> "{\"name\":\"Nikki\",\"age\":18}"
+
+    json = "{\"name\":\"Nikki\",\"age\":18}"
+    PersonRepresenter.from_json(json, Person)
+    #=> %Person{ name: "Nikki", age: 18 }
+
