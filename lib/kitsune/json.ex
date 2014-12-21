@@ -26,7 +26,7 @@ defmodule Kitsune.JSON do
 
       person = %Person{name: "Nikki", age: 18}
       PersonRepresenter.to_json(person)
-      #=> {:ok, "{\"name\":\"Nikki\",\"age\":18}"}
+      #=> "{\"name\":\"Nikki\",\"age\":18}"
 
   """
   defmacro property(label) do
@@ -41,7 +41,8 @@ defmodule Kitsune.JSON do
         map = for p <- @properties, into: %{} do
           { p, Map.get(struct, p) }
         end
-        Poison.encode(map)
+        {:ok, json} = Poison.encode(map)
+        json
       end
 
       def from_json(json, mod) do

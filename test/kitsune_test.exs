@@ -19,7 +19,7 @@ defmodule KitsuneTest do
   end
 
   test "Transforms data to json", %{person: person} do   
-    {:ok, json} = PersonRepresenter.to_json(person)
+    json = PersonRepresenter.to_json(person)
     assert json == "{\"name\":\"Nikki\",\"age\":18}"
   end
 
