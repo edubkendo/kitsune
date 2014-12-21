@@ -5,7 +5,7 @@ Kitsune
 
 -- http://www.mythicalcreaturesguide.com/page/Kitsune
 
-Kitsune is an Elixir library for transforming the representation of data.
+Kitsune is an Elixir library for transforming the representation of data inspired by [Representable](https://github.com/apotonick/representable/).
 
 
 ## Examples
