@@ -43,6 +43,14 @@ defmodule Kitsune.JSON do
         end
         Poison.encode(map)
       end
+
+      def from_json(json, mod) do
+        {:ok, decoded} = Poison.decode(json)
+        map = for p <- @properties, into: %{} do
+          { p, Map.get(decoded, Atom.to_string(p)) }
+        end
+        struct(mod, map)
+      end
     end
   end
 end
