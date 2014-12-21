@@ -10,6 +10,7 @@ Kitsune is an Elixir library for transforming the representation of data inspire
 
 ## Examples
 
+```elixir
     defmodule Person do
       defstruct name: nil, age: nil
     end
@@ -28,4 +29,4 @@ Kitsune is an Elixir library for transforming the representation of data inspire
     json = "{\"name\":\"Nikki\",\"age\":18}"
     PersonRepresenter.from_json(json, Person)
     #=> %Person{ name: "Nikki", age: 18 }
-
+```
