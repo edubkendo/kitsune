@@ -13,8 +13,9 @@ defmodule KitsuneTest do
   use ExUnit.Case
   doctest Kitsune
 
-  test "the truth" do   
+  test "Transforms data to json" do   
     person = %Person{name: "Nikki", age: 18}
-    PersonRepresenter.to_json(person)
+    {:ok, json} = PersonRepresenter.to_json(person)
+    assert json == "{\"name\":\"Nikki\",\"age\":18}"
   end
 end
