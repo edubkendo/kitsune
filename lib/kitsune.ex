@@ -1,0 +1,2 @@
+defmodule Kitsune do
+end
