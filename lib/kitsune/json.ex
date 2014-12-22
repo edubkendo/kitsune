@@ -32,18 +32,37 @@ defmodule Kitsune.JSON do
       PersonRepresenter.from_json(json, Person)
       #=> %Person{ name: "Nikki", age: 18 }
 
+      defmodule Song do
+        defstruct name: nil
+      end
+
+      defmodule SongRepresenter do
+        use Kitsune.JSON
+
+        property :title, as: :name
+      end
+
+      song = %Song{name: "Gin and Juice"}
+      SongRepresenter.to_json(song)
+      #=> "{\"title\":\"Gin and Juice\"}"
+
+      json = "{\"title\":\"Gin and Juice\"}"
+      SongRepresenter.from_json(json, Song)
+      #=> %Song{name: "Gin and Juice"}
+
   """
-  defmacro property(label) do
+  defmacro property(label, opts \\ []) do
+    as = Keyword.get(opts, :as, label)
     quote do
-      @properties [unquote(label)|@properties]
+      @properties [{unquote(label), unquote(as)}|@properties]
     end
   end
 
   defmacro __before_compile__(env) do
     quote do
       def to_json(struct) do
-        map = for p <- @properties, into: %{} do
-          { p, Map.get(struct, p) }
+        map = for {label, as} <- @properties, into: %{} do
+          { label, Map.get(struct, as) }
         end
         {:ok, json} = Poison.encode(map)
         json
@@ -51,8 +70,8 @@ defmodule Kitsune.JSON do
 
       def from_json(json, mod) do
         {:ok, decoded} = Poison.decode(json)
-        map = for p <- @properties, into: %{} do
-          { p, Map.get(decoded, Atom.to_string(p)) }
+        map = for {label, as} <- @properties, into: %{} do
+          { as, Map.get(decoded, Atom.to_string(label)) }
         end
         struct(mod, map)
       end

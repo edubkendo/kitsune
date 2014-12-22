@@ -30,3 +30,28 @@ Kitsune is an Elixir library for transforming the representation of data inspire
     PersonRepresenter.from_json(json, Person)
     #=> %Person{ name: "Nikki", age: 18 }
 ```
+
+If your property doesn't match the name of the key in the Struct, use `as`.
+
+```elixir
+
+      defmodule Song do
+        defstruct name: nil
+      end
+
+      defmodule SongRepresenter do
+        use Kitsune.JSON
+
+        property :title, as: :name
+      end
+
+      song = %Song{name: "Gin and Juice"}
+      SongRepresenter.to_json(song)
+      #=> "{\"title\":\"Gin and Juice\"}"
+
+      json = "{\"title\":\"Gin and Juice\"}"
+      SongRepresenter.from_json(json, Song)
+      #=> %Song{name: "Gin and Juice"}
+
+```
+
