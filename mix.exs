@@ -4,6 +4,8 @@ defmodule Kitsune.Mixfile do
   def project do
     [app: :kitsune,
      version: "0.0.1",
+     description: "Kitsune is an Elixir library for transforming the representation of data inspired by Representable.",
+     package: package,
      elixir: "~> 1.1-dev",
      deps: deps]
   end
@@ -25,6 +27,18 @@ defmodule Kitsune.Mixfile do
   #
   # Type `mix help deps` for more examples and options
   defp deps do
-    [{:poison, "~> 1.3"}]
+    [
+        {:poison, "~> 1.3"},
+        {:ex_doc, "~> 0.6", only: :dev},
+    ]
+  end
+
+  defp package do
+    [
+             contributors: ["Eric West"],
+             licenses: ["MIT"],
+             links: %{github: "https://github.com/edubkendo/kitsune",
+                      docs: "http://hexdocs.pm/kitsune"}
+    ]
   end
 end

@@ -55,3 +55,6 @@ If your property doesn't match the name of the key in the Struct, use `as`.
 
 ```
 
+## Other
+
+- [Docs](http://hexdocs.pm/kitsune/)

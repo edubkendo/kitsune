@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kitsune.JSON</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" charset="utf-8" />
+    <link rel="stylesheet" href="css/elixir.css" type="text/css" media="screen" charset="utf-8" />
+    <script type="text/javascript" charset="utf-8">
+      relpath = '';
+      if (relpath != '') relpath += '/';
+    </script>
+
+    <script type="text/javascript" charset="utf-8" src="js/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/app.js"></script>
+    <script type="text/javascript" charset="utf-8" src="js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </head>
+
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+
+    <section id="content">
+      <div class="breadcrumbs">kitsune v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Kitsune.html">Kitsune</a> &rarr; <a href="Kitsune.JSON.html">JSON</a></div>
+      <h1>
+        Kitsune.JSON
+        
+      </h1>
+
+      <ul class="summary_links">
+        
+          <li><a href="#summary">Summary</a></li>
+        
+        
+        
+        
+          <li><a href="#macros_details">Macros</a></li>
+        
+        
+      </ul>
+
+      
+
+      
+
+      
+        <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
+        <table class="summary">
+          <tr>
+  <td class="summary_signature"><a href="#property/2">property(label, opts \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Adds a single property to the eventual json output</p>
+</td>
+  
+</tr>
+
+        </table>
+      
+
+      
+
+      
+
+      
+        <section id="macros_details" class="details_list">
+          <h2>Macros</h2>
+          <section class="detail">
+  <div class="detail_header" id="property/2">
+    <span class="signature"><strong>property(label, opts \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#property/2" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Adds a single property to the eventual json output.</p>
+<h2 id="examples">Examples</h2>
+<pre><code>defmodule Person do
+  defstruct name: nil, age: nil
+end
+
+defmodule PersonRepresenter do
+  use Kitsune.JSON
+
+  property :name
+  property :age
+end
+
+person = %Person{name: &quot;Nikki&quot;, age: 18}
+PersonRepresenter.to_json(person)
+#=&gt; &quot;{&quot;name&quot;:&quot;Nikki&quot;,&quot;age&quot;:18}&quot;
+
+json = &quot;{&quot;name&quot;:&quot;Nikki&quot;,&quot;age&quot;:18}&quot;
+PersonRepresenter.from_json(json, Person)
+#=&gt; %Person{ name: &quot;Nikki&quot;, age: 18 }
+
+defmodule Song do
+  defstruct name: nil
+end
+
+defmodule SongRepresenter do
+  use Kitsune.JSON
+
+  property :title, as: :name
+end
+
+song = %Song{name: &quot;Gin and Juice&quot;}
+SongRepresenter.to_json(song)
+#=&gt; &quot;{&quot;title&quot;:&quot;Gin and Juice&quot;}&quot;
+
+json = &quot;{&quot;title&quot;:&quot;Gin and Juice&quot;}&quot;
+SongRepresenter.from_json(json, Song)
+#=&gt; %Song{name: &quot;Gin and Juice&quot;}</code></pre>
+
+  </section>
+  
+</section>
+
+        </section>
+      
+
+      
+    </section>
+  </body>
+</html>
