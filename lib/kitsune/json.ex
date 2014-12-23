@@ -142,10 +142,6 @@ defmodule Kitsune.JSON do
           }
         end
 
-        Enum.map(@collections, fn(c) ->
-          map = Map.pop(map, Atom.to_string(c[:label]))
-        end)
-
         map = Map.merge(map, collections)
 
         struct(mod, map)
