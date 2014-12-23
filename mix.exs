@@ -3,7 +3,7 @@ defmodule Kitsune.Mixfile do
 
   def project do
     [app: :kitsune,
-     version: "0.5.1",
+     version: "0.5.2",
      description: "Kitsune is an Elixir library for transforming the representation of data inspired by Representable.",
      package: package,
      elixir: "~> 1.1-dev",

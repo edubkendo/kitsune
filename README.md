@@ -70,7 +70,7 @@ You can use collections to create collections of representations inside represen
       use Kitsune.JSON
 
       property :name
-      collection :songs, extend: SongRepresenter
+      collection :songs, extend: SongRepresenter, from: Song
     end
 
     album = %Album{name: "Doggystyle", songs: [song, %Song{name: "Lodi Dodi"}]}

@@ -22,7 +22,7 @@
     </script>
 
     <section id="content">
-      <div class="breadcrumbs">kitsune v0.5.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Kitsune.html">Kitsune</a> &rarr; <a href="Kitsune.JSON.html">JSON</a></div>
+      <div class="breadcrumbs">kitsune v0.5.2 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Kitsune.html">Kitsune</a> &rarr; <a href="Kitsune.JSON.html">JSON</a></div>
       <h1>
         Kitsune.JSON
         
@@ -93,7 +93,7 @@ defmodule AlbumRepresenter do
   use Kitsune.JSON
 
   property :name
-  collection :songs, extend: SongRepresenter
+  collection :songs, extend: SongRepresenter, from: Song
 end
 
 album = %Album{name: &quot;Doggystyle&quot;, songs: [song, %Song{name: &quot;Lodi Dodi&quot;}]}
