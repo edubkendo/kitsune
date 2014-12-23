@@ -22,7 +22,7 @@
     </script>
 
     <section id="content">
-      <div class="breadcrumbs">kitsune v0.0.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Kitsune.html">Kitsune</a> &rarr; <a href="Kitsune.JSON.html">JSON</a></div>
+      <div class="breadcrumbs">kitsune v0.5.0 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Kitsune.html">Kitsune</a> &rarr; <a href="Kitsune.JSON.html">JSON</a></div>
       <h1>
         Kitsune.JSON
         
@@ -48,6 +48,13 @@
         <h2 id="summary">Summary<span class="detail_header_links"><a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a></span></h2>
         <table class="summary">
           <tr>
+  <td class="summary_signature"><a href="#collection/2">collection(label, opts \\ [])</a></td>
+  
+    <td class="summary_synopsis"><p>Nest a collection of other representations in the output</p>
+</td>
+  
+</tr>
+<tr>
   <td class="summary_signature"><a href="#property/2">property(label, opts \\ [])</a></td>
   
     <td class="summary_synopsis"><p>Adds a single property to the eventual json output</p>
@@ -66,6 +73,37 @@
         <section id="macros_details" class="details_list">
           <h2>Macros</h2>
           <section class="detail">
+  <div class="detail_header" id="collection/2">
+    <span class="signature"><strong>collection(label, opts \\ [])</strong></span>
+    <div class="detail_header_links">
+      <span class="detail_type">(macro)</span>
+      <a href="#collection/2" class="detail_link" title="Link to this macro">#</a>
+      <a class="to_top_link" href="#content" title="To the top of the page">&uarr;</a>
+    </div>
+  </div>
+  
+  <section class="docstring">
+    <p>Nest a collection of other representations in the output.</p>
+<h2 id="examples">Examples</h2>
+<pre><code>defmodule Album do
+  defstruct name: nil, songs: []
+end
+
+defmodule AlbumRepresenter do
+  use Kitsune.JSON
+
+  property :name
+  collection :songs, extend: SongRepresenter
+end
+
+album = %Album{name: &quot;Doggystyle&quot;, songs: [song, %Song{name: &quot;Lodi Dodi&quot;}]}
+AlbumRepresenter.to_json(album)
+#=&gt; &quot;{&quot;name&quot;:&quot;Doggystyle&quot;,&quot;songs&quot;:[{&quot;title&quot;:&quot;Gin and Juice&quot;},{&quot;title&quot;:&quot;Lodi Dodi&quot;}]}&quot;</code></pre>
+
+  </section>
+  
+</section>
+<section class="detail">
   <div class="detail_header" id="property/2">
     <span class="signature"><strong>property(label, opts \\ [])</strong></span>
     <div class="detail_header_links">
