@@ -98,7 +98,12 @@ end
 
 album = %Album{name: &quot;Doggystyle&quot;, songs: [song, %Song{name: &quot;Lodi Dodi&quot;}]}
 AlbumRepresenter.to_json(album)
-#=&gt; &quot;{&quot;name&quot;:&quot;Doggystyle&quot;,&quot;songs&quot;:[{&quot;title&quot;:&quot;Gin and Juice&quot;},{&quot;title&quot;:&quot;Lodi Dodi&quot;}]}&quot;</code></pre>
+#=&gt; &quot;{&quot;name&quot;:&quot;Doggystyle&quot;,&quot;songs&quot;:[{&quot;title&quot;:&quot;Gin and Juice&quot;},{&quot;title&quot;:&quot;Lodi Dodi&quot;}]}&quot;
+
+json = &quot;{&quot;name&quot;:&quot;Doggystyle&quot;,&quot;songs&quot;:[{&quot;title&quot;:&quot;Gin and Juice&quot;},{&quot;title&quot;:&quot;Lodi Dodi&quot;}]}&quot;
+AlbumRepresenter.from_json(album, Album)
+
+#=&gt; %Album{name: &quot;Doggystyle&quot;, songs: [%Song{name: &quot;Gin and Juice&quot;}, %Song{name: &quot;Lodi Dodi&quot;}]}</code></pre>
 
   </section>
   

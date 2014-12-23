@@ -62,25 +62,25 @@ You can use collections to create collections of representations inside represen
 
 ```elixir
 
-defmodule Album do
-  defstruct name: nil, songs: []
-end
+    defmodule Album do
+      defstruct name: nil, songs: []
+    end
 
-defmodule AlbumRepresenter do
-  use Kitsune.JSON
+    defmodule AlbumRepresenter do
+      use Kitsune.JSON
 
-  property :name
-  collection :songs, extend: SongRepresenter
-end
+      property :name
+      collection :songs, extend: SongRepresenter
+    end
 
-album = %Album{name: "Doggystyle", songs: [song, %Song{name: "Lodi Dodi"}]}
-AlbumRepresenter.to_json(album)
-#=> "{\"name\":\"Doggystyle\",\"songs\":[{\"title\":\"Gin and Juice\"},{\"title\":\"Lodi Dodi\"}]}"
+    album = %Album{name: "Doggystyle", songs: [song, %Song{name: "Lodi Dodi"}]}
+    AlbumRepresenter.to_json(album)
+    #=> "{\"name\":\"Doggystyle\",\"songs\":[{\"title\":\"Gin and Juice\"},{\"title\":\"Lodi Dodi\"}]}"
 
-json = "{\"name\":\"Doggystyle\",\"songs\":[{\"title\":\"Gin and Juice\"},{\"title\":\"Lodi Dodi\"}]}"
-AlbumRepresenter.from_json(album, Album)
+    json = "{\"name\":\"Doggystyle\",\"songs\":[{\"title\":\"Gin and Juice\"},{\"title\":\"Lodi Dodi\"}]}"
+    AlbumRepresenter.from_json(album, Album)
 
-#=> %Album{name: "Doggystyle", songs: [%Song{name: "Gin and Juice"}, %Song{name: "Lodi Dodi"}]}
+    #=> %Album{name: "Doggystyle", songs: [%Song{name: "Gin and Juice"}, %Song{name: "Lodi Dodi"}]}
 
 ```
 

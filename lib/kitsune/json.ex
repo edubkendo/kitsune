@@ -79,6 +79,11 @@ defmodule Kitsune.JSON do
       AlbumRepresenter.to_json(album)
       #=> "{\"name\":\"Doggystyle\",\"songs\":[{\"title\":\"Gin and Juice\"},{\"title\":\"Lodi Dodi\"}]}"
 
+      json = "{\"name\":\"Doggystyle\",\"songs\":[{\"title\":\"Gin and Juice\"},{\"title\":\"Lodi Dodi\"}]}"
+      AlbumRepresenter.from_json(album, Album)
+
+      #=> %Album{name: "Doggystyle", songs: [%Song{name: "Gin and Juice"}, %Song{name: "Lodi Dodi"}]}
+
   """
   defmacro collection(label, opts \\ []) do
     as = Keyword.get(opts, :as, label)
