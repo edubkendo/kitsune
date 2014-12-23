@@ -22,7 +22,7 @@
     </script>
 
     <section id="content">
-      <div class="breadcrumbs">kitsune v0.5.0 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Kitsune.html">Kitsune</a> &rarr; <a href="Kitsune.JSON.html">JSON</a></div>
+      <div class="breadcrumbs">kitsune v0.5.1 &rarr; <a href="overview.html">Overview</a> &rarr; <a href="Kitsune.html">Kitsune</a> &rarr; <a href="Kitsune.JSON.html">JSON</a></div>
       <h1>
         Kitsune.JSON
         
@@ -101,8 +101,7 @@ AlbumRepresenter.to_json(album)
 #=&gt; &quot;{&quot;name&quot;:&quot;Doggystyle&quot;,&quot;songs&quot;:[{&quot;title&quot;:&quot;Gin and Juice&quot;},{&quot;title&quot;:&quot;Lodi Dodi&quot;}]}&quot;
 
 json = &quot;{&quot;name&quot;:&quot;Doggystyle&quot;,&quot;songs&quot;:[{&quot;title&quot;:&quot;Gin and Juice&quot;},{&quot;title&quot;:&quot;Lodi Dodi&quot;}]}&quot;
-AlbumRepresenter.from_json(album, Album)
-
+AlbumRepresenter.from_json(json, Album)
 #=&gt; %Album{name: &quot;Doggystyle&quot;, songs: [%Song{name: &quot;Gin and Juice&quot;}, %Song{name: &quot;Lodi Dodi&quot;}]}</code></pre>
 
   </section>

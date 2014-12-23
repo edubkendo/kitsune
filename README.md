@@ -78,8 +78,7 @@ You can use collections to create collections of representations inside represen
     #=> "{\"name\":\"Doggystyle\",\"songs\":[{\"title\":\"Gin and Juice\"},{\"title\":\"Lodi Dodi\"}]}"
 
     json = "{\"name\":\"Doggystyle\",\"songs\":[{\"title\":\"Gin and Juice\"},{\"title\":\"Lodi Dodi\"}]}"
-    AlbumRepresenter.from_json(album, Album)
-
+    AlbumRepresenter.from_json(json, Album)
     #=> %Album{name: "Doggystyle", songs: [%Song{name: "Gin and Juice"}, %Song{name: "Lodi Dodi"}]}
 
 ```
